@@ -1,0 +1,52 @@
+
+.contact-box {
+  position: absolute;
+  left: 50vw;                
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38vw;             
+  height: 41vh;          
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  border: 1px solid #333;
+  background: #fff;
+}
+
+.contact-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-link {
+  font-family: "bankprinter", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #000;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  color: blue;
+  transition: 0.2s;
+}
+
+.contact-photo {
+  position: absolute;
+  right: 6%;
+  bottom: 12%;
+  height: 75%;
+  width: auto;
+}
+
+@media (max-width: 800px) {
+  .contact-box {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 90vw;
+    margin: 2rem auto;
+  }
+}

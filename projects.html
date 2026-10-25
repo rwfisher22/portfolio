@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <link rel="stylesheet" href="gallery.css">
+  <link rel="stylesheet" href="projects.css">
+  <link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
+</head>
+<body>
+
+  <nav>
+    <a class="link-current" href="index.html">&lt; projects</a>
+    <a class="link" href="gallery.html">gallery</a>
+    <a class="link" href="contact.html">contact</a>
+  </nav>
+
+  <main class="projects">
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true"  data-target="cowpasture">cowpasture</button>
+      <button class="tab" role="tab" aria-selected="false" data-target="introspectacular">introspectacular</button>
+    </div>
+
+
+    <section class="project active" id="cowpasture">
+      <div class="carousel">
+        <div class="track" tabindex="0">
+
+        <div class="slide">
+          <video src="projects/cowpasture-normal.mp4" autoplay muted loop playsinline></video>
+        </div>
+
+        <div class="slide">
+          <video src="projects/hill-normal.mp4" autoplay muted loop playsinline></video>
+        </div>
+
+        <div class="slide">
+          <video src="projects/cabin-normal.mp4" autoplay muted loop playsinline></video>
+        </div>
+
+        <div class="slide">
+          <video src="projects/demo.mp4" controls playsinline preload="metadata"></video>
+        </div>
+
+        </div>
+        <button class="arrow prev" aria-label="Previous image">&lt;</button>
+        <button class="arrow next" aria-label="Next image">&gt;</button>
+        <div class="counter"></div>
+      </div>
+
+      <div class="project-text">
+        <p>"Cowpasture" consists of three 3D modeled scenes resembling landscapes of Bath County, VA. When presented, these scenes are interactive and become jittered when sound is detected. </p>
+      </div>
+    </section>
+
+    <section class="project" id="introspectacular">
+      <div class="carousel">
+        <div class="track" tabindex="0">
+          <div class="slide">
+            <iframe
+              src="https://www.youtube.com/embed/6C8QUoRY3zM"
+              title="Introspectacular Music Video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <div class="counter"></div>
+      </div>
+
+      <div class="project-text">
+        <p>"Instrospectacular" by Arnie Brenn. I animated this visualizer for the album release on 4/20/2025. I used primarily Blender, Photoshop, Premiere, and Reaper.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const projects = document.querySelectorAll(".project");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.setAttribute("aria-selected", t === tab));
+        projects.forEach(p => {
+          const show = p.id === tab.dataset.target;
+          p.classList.toggle("active", show);
+          if (show) {
+            p.querySelector(".track").scrollLeft = 0;
+            updateCounter(p);
+          }
+        });
+      });
+    });
+
+    function updateCounter(project) {
+      const track = project.querySelector(".track");
+      const total = track.children.length;
+      const index = Math.round(track.scrollLeft / track.clientWidth) + 1;
+      project.querySelector(".counter").textContent = index + " / " + total;
+    }
+
+
+    projects.forEach(project => {
+      const track = project.querySelector(".track");
+
+      project.querySelector(".prev").addEventListener("click", () => {
+        track.scrollBy({ left: -track.clientWidth, behavior: "smooth" });
+      });
+
+      project.querySelector(".next").addEventListener("click", () => {
+        track.scrollBy({ left: track.clientWidth, behavior: "smooth" });
+      });
+
+      track.addEventListener("scroll", () => updateCounter(project));
+      updateCounter(project);
+    });
+
+    document.querySelectorAll(".track").forEach(track => {
+      track.addEventListener("scroll", () => {
+        track.querySelectorAll("video[controls]").forEach(v => v.pause());
+      });
+    });
+  </script>
+
+</body>
+</html>

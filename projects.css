@@ -1,0 +1,146 @@
+
+.projects {
+  margin-left: 35.6vw;
+  width: 46.8vw;
+  padding: 10vh 0 5vh;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 8vw;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  padding: 0 0 0.25rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: "bankprinter", sans-serif;
+  font-size: 1rem;
+  color: #000;
+  opacity: 0.45;
+  cursor: pointer;
+  transition: opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.tab:hover,
+.tab[aria-selected="true"] {
+  opacity: 1;
+}
+
+.tab[aria-selected="true"] {
+  border-bottom-color: #000;
+}
+
+.project {
+  display: none;
+}
+
+.project.active {
+  display: block;
+}
+
+.carousel {
+  position: relative;
+}
+
+.track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  outline: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  aspect-ratio: 1.68;
+  scroll-snap-align: center;
+}
+
+.slide img,
+.slide video,
+.slide iframe,
+.slide .ph {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.slide iframe {
+  border: 0;
+}
+
+.slide video {
+  object-fit: cover;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.5rem 0.9rem;
+  border: 0;
+  background: rgba(255, 255, 255, 0.75);
+  font-family: "bankprinter", sans-serif;
+  font-size: 1.5rem;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.arrow:hover {
+  background: #fff;
+}
+
+.prev { left: 0.5rem; }
+.next { right: 0.5rem; }
+
+.counter {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.15rem 0.6rem;
+  background: rgba(255, 255, 255, 0.75);
+  font-family: "sourcecode", monospace;
+  font-size: 0.8rem;
+}
+
+.project-text {
+  min-height: 18vh;
+  margin: 2.5rem 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid #333;
+  background: #fff;
+}
+
+.project-text p {
+  margin: 0;
+  font-family: "sourcecode-italics", monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+  .projects {
+    margin-left: 0;
+    width: auto;
+    padding: 2vh 4vw 5vh;
+  }
+
+  .tabs {
+    gap: 0.5rem 2rem;
+  }
+
+  .project-text {
+    margin: 1.5rem 0 0;
+  }
+}
