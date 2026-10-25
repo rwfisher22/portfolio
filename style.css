@@ -6,6 +6,13 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "crushed";
+  src: url("fonts/crushed.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 
 html, body {
@@ -19,7 +26,7 @@ html, body {
 }
 
 .name {
-  font-family: "bankprinter", sans-serif;
+  font-family: "crushed", sans-serif;
   position: absolute;
   top: 13%;
   right: 6%;
